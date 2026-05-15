@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\include",
+    "\\include\\81yOdom",
+    "\\include\\81yOdom\\sensors",
+    "\\include\\81yOdom\\utils",
+    "\\src"
+  ],
+  "SelectedNode": "\\include\\81yOdom\\utils\\math.hpp",
+  "PreviewInSolutionExplorer": false
+}
