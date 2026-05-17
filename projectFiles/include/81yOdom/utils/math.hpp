@@ -13,8 +13,15 @@ inline double clamp(double val, double minVal, double maxVal) {
 	return std::max(minVal, std::min(maxVal, val)); 
 }
 
-//Normalizing angles to the range [0, 360]
+//Normalizing angles to the range [-180, 180]
+inline double normalizeAngle(double angle) {
+	while (angle > 180.0) angle -= 360.0;
+	while (angle <= -180.0) angle += 360.0;
+	return angle;
+}
 
+
+//Normalizing angles to the range [0, 360]
 inline double normalizeAngle360(double angle) {
 	while (angle>= 360.0) angle -= 360.0;
 	while (angle < 0.0) angle += 360.0;
