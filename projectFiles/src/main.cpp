@@ -1,5 +1,18 @@
 #include "main.h"
 
+
+
+pros::Rotation leftRotation(1); // Rotation sensor on port 1
+pros::Rotation rightRotation(2); // Rotation sensor on port 2
+pros::Rotation backRotation(3); // Rotation sensor on port 3
+
+TrackingWheel leftWheel(&leftRotation, 2.75, 1.0); // 2.75 inch diameter, 1:1 gearing
+TrackingWheel rightWheel(&rightRotation, 2.75, 1.0); // 2.75 inch diameter, 1:1 gearing
+TrackingWheel backWheel(&backRotation, 2.75, 1.0); // 2.75 inch diameter, 1:1 gearing
+
+IMU imu(4); // IMU sensor on port 4
+
+Odom odom(&leftWheel, &rightWheel, &backWheel, &imu, 11.5, 4.0); // 11.5 inch track width, 4 inch back wheel offset
 /**
  * A callback function for LLEMU's center button.
  *

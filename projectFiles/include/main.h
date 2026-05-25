@@ -74,6 +74,13 @@ void opcontrol(void);
 /**
  * You can add C++-only headers here
  */
+#include "81yOdom/odometry/Odom.hpp"
+#include "81yOdom/odometry/pose.hpp"
+#include "81yOdom/sensors/TrackingWheel.hpp"
+#include "81yOdom/sensors/IMU.hpp"
+#include "81yOdom/pid/PID.hpp"
+#include "81yOdom/utils/Timer.hpp"
+#include "81yOdom/utils/ExitConditions.hpp"
 //#include <iostream>
 #endif
 
