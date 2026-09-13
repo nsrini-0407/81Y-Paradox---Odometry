@@ -9,6 +9,7 @@ class SettleCondition {
         double threshold; //error threshold to consider "settled"
         double settleTimeMs; //time in ms that error must stay below threshold to exit
         uint32_t settleStart = 0; //time when error first went below threshold
+        bool settling = false;
 
     public: 
         SettleCondition(double threshold, double settleTimeMs) 
@@ -16,16 +17,19 @@ class SettleCondition {
 
     bool update (double error) {
         if (std::fabs(error) < threshold) {
-            if (settleStart == 0) settleStart = pros::millis();
-            if (pros::millis() - settleStart >= settleTimeMs) {
-                return true; //error has been below threshold for required time, exit
-            } else {
-                settleStart = 0; //reset timer if error goes above threshold
+            if (!settling) {
+                settleStart = pros::millis();
+                settling = true;
             }
+            return pros::millis() - settleStart >= settleTimeMs;
 
         }
+        settling = false;
         return false; //not settled yet
     }
 
-    void reset() {settleStart = 0;} //reset the settle timer, call when starting a new movement
+    void reset() {
+        settleStart = 0;
+        settling = false;
+    } //reset the settle timer, call when starting a new movement
 };

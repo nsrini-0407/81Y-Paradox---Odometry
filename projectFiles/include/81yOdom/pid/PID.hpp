@@ -13,9 +13,9 @@ struct PIDConfig {
 
 class PID {
 
-    explicit PID(PIDConfig config) : config(config) {}
-
     public:
+
+        explicit PID(PIDConfig config) : config(config) {}
     
         double Update (double error, double dt) {
             //only accumulate integral if error is above threshold to prevent windup when close to target
@@ -28,7 +28,7 @@ class PID {
             double derivative = (dt > 0) ? (error - prevError) / dt: 0.0; 
             prevError = error;
 
-            return (config.kP * error) + (config.kI * error) + (config.kD * error);
+            return (config.kP * error) + (config.kI * integral) + (config.kD * derivative);
         }
 
         void reset() {

@@ -1,6 +1,6 @@
 #pragma once
 #include <cmath>
-#include "81yOdom/utils/Math.hpp"
+#include "81yOdom/utils/math.hpp"
 
 struct Pose {
     double x;       //inches, field x

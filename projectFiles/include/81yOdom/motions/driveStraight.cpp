@@ -40,7 +40,8 @@ void driveStraight(double distanceIn, double targetHeading, double timeoutMs, do
         }
 
         left.move_voltage(leftOut * 120);
-        right.move_voltage(rightOut * 120);    
+        right.move_voltage(rightOut * 120);
+        pros::delay(10);
     }
 
     left.brake();

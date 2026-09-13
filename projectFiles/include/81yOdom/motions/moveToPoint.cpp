@@ -37,7 +37,7 @@ void moveToPoint(double tx, double ty, double timeoutMs, double maxSpeed, double
                 break; //exit if settled and close to target
             }
 
-            double dt = 0.0; 
+            double dt = 0.01;
             double driveOut = drivePID.Update(lateralError, dt);
             double turnOut = close ? 0.0: turnPID.Update(headingError, dt); //stop turning when close to target
 

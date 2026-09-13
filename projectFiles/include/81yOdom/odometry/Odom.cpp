@@ -1,20 +1,18 @@
 #include "81yOdom/odometry/Odom.hpp"
-#include "81yOdom/utils/Math.hpp"
+#include "81yOdom/utils/math.hpp"
 #include "pros/rtos.h"
 #include <cmath>
 
 void Odom::update() {
-    //Record encoder positions at the start of cycle
-    left->recordPosition();
-    right->recordPosition();
-    back->recordPosition();
-
-    //wait for movement, called after 10ms delay in task
-
     //Get deltas since last cycle
     double dL = left->getDelta();
     double dR = right->getDelta();
     double dB = back->getDelta();
+
+    //Store the current readings for the next cycle.
+    left->recordPosition();
+    right->recordPosition();
+    back->recordPosition();
 
     //Get heading from IMU (safer then encoder-based heading, which can be inaccurate due to slippage)
     double currTheta = imu->getHeading();

@@ -1,6 +1,6 @@
 #pragma once
 #include "pros/rotation.hpp"
-#include "81yOdom/utils/Math.hpp"
+#include "81yOdom/utils/math.hpp"
 
 class TrackingWheel {
 public :
