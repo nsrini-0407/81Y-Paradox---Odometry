@@ -82,6 +82,7 @@ void opcontrol(void);
 #include "81yOdom/utils/Timer.hpp"
 #include "81yOdom/utils/ExitConditions.hpp"
 #include "81yOdom/utils/Math.hpp"
+#include "gui/gui.hpp"
 //#include <iostream>
 #endif
 

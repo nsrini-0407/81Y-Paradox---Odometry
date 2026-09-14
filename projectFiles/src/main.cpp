@@ -1,5 +1,14 @@
 #include "main.h"
+<<<<<<< Updated upstream
 	
+=======
+#include "pros/motors.hpp"
+#include "liblvgl/lvgl.h"
+
+LV_IMAGE_DECLARE(logo_map);  // matches whatever name the converter used
+
+
+>>>>>>> Stashed changes
 
 
 pros::Rotation leftRotation(1); // Rotation sensor on port 1
@@ -13,6 +22,12 @@ TrackingWheel backWheel(&backRotation, 2.75, 1.0); // 2.75 inch diameter, 1:1 ge
 IMU imu(4); // IMU sensor on port 4
 
 Odom odom(&leftWheel, &rightWheel, &backWheel, &imu, 11.5, 4.0); // 11.5 inch track width, 4 inch back wheel offset
+
+pros::Motor leftFrontMotor(12);
+pros::Motor leftBackMotor(13);
+pros::Motor rightFrontMotor(14);
+pros::Motor rightBackMotor(15);
+pros::Motor intakeMotor(16);
 /**
  * A callback function for LLEMU's center button.
  *
@@ -36,11 +51,23 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	gui::setLogoImage(&logo_map);
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+	gui::setWatchedMotors({
+        {"L Front", &leftFrontMotor},
+        {"L Back",  &leftBackMotor},
+        {"R Front", &rightFrontMotor},
+        {"R Back",  &rightBackMotor},
+        {"Intake",  &intakeMotor},
+        // add every motor you'd want warning on for a hotswap
+    });
+
+    gui::init();
 }
+
 
 /**
  * Runs while the robot is in the disabled state of Field Management System or
