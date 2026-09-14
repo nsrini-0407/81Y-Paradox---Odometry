@@ -1,14 +1,11 @@
 #include "main.h"
-<<<<<<< Updated upstream
 	
-=======
 #include "pros/motors.hpp"
 #include "liblvgl/lvgl.h"
 
 LV_IMAGE_DECLARE(logo_map);  // matches whatever name the converter used
 
 
->>>>>>> Stashed changes
 
 
 pros::Rotation leftRotation(1); // Rotation sensor on port 1
